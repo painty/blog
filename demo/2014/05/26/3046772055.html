@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas生成直方图测试_Bobscrip.com</title>
+</head>
+<body>
+<h1>Canvas生成直方图测试</h1>
+<canvas id="canvas" width="760" height="300"></canvas>
+<p><a href="https://blog.bobscript.com/2014/05/26/404.html" target="_blank">返回原文章</a></p>
+<script>
+var c = document.getElementById("canvas"),
+    ctx = c.getContext("2d"),
+    img = new Image,
+    tj=[[],[],[],[]];
+
+for (var i = 0; i < 256; i++) {
+    tj[0][i]=0;
+    tj[1][i]=0;
+    tj[2][i]=0;
+};
+
+img.src='1331554238.jpg';
+
+img.onload=function(){
+    ctx.drawImage(img, 0, 0, 400,300);
+    imgData=ctx.getImageData(0,0,400,300);
+    imgDataTemp=ctx.createImageData(256,300);
+    setColor(imgDataTemp.data,0);
+
+    for (var i = 0; i < imgData.data.length; i++) {
+        tj[i%4][ imgData.data[i] ] ++;
+    };
+
+    for (var i = 0; i < 4; i++) {
+        for (var j = 0; j < 256; j++) {
+            drawPoint(imgDataTemp,j,tj[i][j]/10,i)
+        };
+    };
+
+    ctx.putImageData(imgDataTemp, 500, 0);
+
+};
+
+function drawPoint(img,x,y,c){
+    x=Math.round(x);
+    y=Math.round(y);
+    var _px;
+    for (var i = 300-y; i < 300; i++) {
+        _px=(img.width*i+x)*4+c;
+        img.data[_px]=255;
+    };
+}
+
+function setColor(o,c) {
+    var l=o.length, i=0;
+    for(;i<l;i++) {
+        if (i%4!==3) {
+            o[i] = c;
+        }else{
+            o[i] = 255;
+        }
+    };
+};
+</script>
+</body>
+</html>

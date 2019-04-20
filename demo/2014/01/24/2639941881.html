@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mouseenter mouseover 区别 demo</title>
+  <style>
+  div.out {
+    width: 40%;
+    height: 240px;
+    margin: 0 15px;
+    background-color: #d6edfc;
+    float: left;
+  }
+  div.in {
+    width: 60%;
+    height: 60%;
+    background-color: #fc0;
+    margin: 10px auto;
+  }
+  p {
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+    background: rgba(0,0,0,0.2);
+    margin-bottom: 5px;
+  }
+  </style>
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+ 
+<div class="out overout">
+  <p>move your mouse</p>
+  <p>0</p>
+  <div class="in overout"><p>move your mouse</p><p>0</p><p>move your mouse</p><p>0</p></div>
+  <p>move your mouse</p>
+  <p>0</p>
+</div>
+ 
+<div class="out enterleave">
+  <p>move your mouse</p>
+  <p>0</p>
+  <div class="in enterleave"><p>move your mouse</p><p>0</p><p>move your mouse</p><p>0</p></div>
+  <p>move your mouse</p>
+  <p>0</p>
+</div>
+ 
+<a href="http://bobscript.com/archives/292/">返回文章</a>
+
+<script>
+var i =0,j=0,k=0,l=0;
+$( "div.overout" )
+  .mouseover(function() {
+    $(this).children('p').eq(0).text( "mouse over" );
+    $(this).children('p').eq(1).text( this===$('.overout.out')[0]? ++i : ++k );
+  })
+  .mouseout(function() {
+    $(this).children('p').eq(2).text( "mouse out" );
+    $(this).children('p').eq(3).text( this===$('.overout.out')[0]? ++j : ++l  );
+  });
+ 
+var n = 0,m=0,p=0,q=0;
+$( "div.enterleave" )
+  .mouseenter(function() {
+    $(this).children('p').eq(0).text( "mouse enter" );
+    $(this).children('p').eq(1).text( this===$('.enterleave.out')[0]? ++n : ++m );
+  })
+  .mouseleave(function() {
+    $(this).children('p').eq(2).text( "mouse leave" );
+    $(this).children('p').eq(3).text( this===$('.enterleave.out')[0]? ++p : ++q );
+  });
+</script>
+ 
+</body>
+</html>

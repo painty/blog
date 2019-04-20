@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CSS 选择器之 &gt; + ~ | Bobscript</title>
+    <meta name="description" content="白天切图，晚上切菜">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c745cea3.css" as="style"><link rel="preload" href="/assets/js/app.99e05f95.js" as="script"><link rel="preload" href="/assets/js/2.93e54dd3.js" as="script"><link rel="preload" href="/assets/js/49.f39ceb73.js" as="script"><link rel="prefetch" href="/assets/js/10.be48f157.js"><link rel="prefetch" href="/assets/js/11.7b371b13.js"><link rel="prefetch" href="/assets/js/12.c7ecc6e8.js"><link rel="prefetch" href="/assets/js/13.92f71886.js"><link rel="prefetch" href="/assets/js/14.d0ddbc49.js"><link rel="prefetch" href="/assets/js/15.22e5715b.js"><link rel="prefetch" href="/assets/js/16.935d7e52.js"><link rel="prefetch" href="/assets/js/17.2bf640e4.js"><link rel="prefetch" href="/assets/js/18.767ea5cf.js"><link rel="prefetch" href="/assets/js/19.1f08efcc.js"><link rel="prefetch" href="/assets/js/20.971af43e.js"><link rel="prefetch" href="/assets/js/21.0f961777.js"><link rel="prefetch" href="/assets/js/22.1f524836.js"><link rel="prefetch" href="/assets/js/23.17e819da.js"><link rel="prefetch" href="/assets/js/24.c8c3eace.js"><link rel="prefetch" href="/assets/js/25.269908c9.js"><link rel="prefetch" href="/assets/js/26.5266162e.js"><link rel="prefetch" href="/assets/js/27.1a1438e2.js"><link rel="prefetch" href="/assets/js/28.0eaa4122.js"><link rel="prefetch" href="/assets/js/29.7e470fb7.js"><link rel="prefetch" href="/assets/js/3.53dd634a.js"><link rel="prefetch" href="/assets/js/30.b6b84a09.js"><link rel="prefetch" href="/assets/js/31.048567d6.js"><link rel="prefetch" href="/assets/js/32.145ad0b8.js"><link rel="prefetch" href="/assets/js/33.62e812bd.js"><link rel="prefetch" href="/assets/js/34.31c05704.js"><link rel="prefetch" href="/assets/js/35.ba79a7a0.js"><link rel="prefetch" href="/assets/js/36.67a5b25b.js"><link rel="prefetch" href="/assets/js/37.b6b5b0f4.js"><link rel="prefetch" href="/assets/js/38.8897bd4e.js"><link rel="prefetch" href="/assets/js/39.dc3abd65.js"><link rel="prefetch" href="/assets/js/4.da34f57a.js"><link rel="prefetch" href="/assets/js/40.329d1f91.js"><link rel="prefetch" href="/assets/js/41.57cd30e9.js"><link rel="prefetch" href="/assets/js/42.8b4613f5.js"><link rel="prefetch" href="/assets/js/43.9854386a.js"><link rel="prefetch" href="/assets/js/44.3b4a01f5.js"><link rel="prefetch" href="/assets/js/45.3ca8aa82.js"><link rel="prefetch" href="/assets/js/46.055f433b.js"><link rel="prefetch" href="/assets/js/47.acfcb947.js"><link rel="prefetch" href="/assets/js/48.9de647b4.js"><link rel="prefetch" href="/assets/js/5.7bbbf963.js"><link rel="prefetch" href="/assets/js/50.f5907641.js"><link rel="prefetch" href="/assets/js/51.36e3efaa.js"><link rel="prefetch" href="/assets/js/52.d5ddfb61.js"><link rel="prefetch" href="/assets/js/53.ec2d3182.js"><link rel="prefetch" href="/assets/js/54.17874d42.js"><link rel="prefetch" href="/assets/js/55.145aac7c.js"><link rel="prefetch" href="/assets/js/56.7fd1efa2.js"><link rel="prefetch" href="/assets/js/6.ccc445b6.js"><link rel="prefetch" href="/assets/js/7.b43b9a6e.js"><link rel="prefetch" href="/assets/js/8.a4af12d5.js"><link rel="prefetch" href="/assets/js/9.9ac313ca.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c745cea3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="白天切图，晚上切菜" class="router-link-active">
+      Bobscript
+    </a> <div style="clear: both"></div></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      CSS 选择器之 &gt; + ~
+    </h1> <time datetime="2014-11-4" title="2014-11-4" pubdate="pubdate" class="post-date">
+  4 years ago
+</time></div> <div class="content default"><h1 id="css-选择器之"><a href="#css-选择器之" aria-hidden="true" class="header-anchor">#</a> CSS 选择器之 &gt; + ~</h1> <p><strong>PS：标题没有乱码 😃</strong></p> <h2 id="选择器"><a href="#选择器" aria-hidden="true" class="header-anchor">#</a> &gt;选择器</h2> <p><code>div &gt; a</code></p> <p>选取父元素是 <code>&lt;div&gt;</code> 元素的每个 <code>&lt;a&gt;</code> 元素</p> <p>父元素，就是其直接的上层元素</p> <p>所以</p> <pre><code>&lt;div&gt;
+    &lt;p&gt;&lt;a href=&quot;#&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre> <p>这样的<code>&lt;a&gt;</code>是不会被选中的。</p> <hr> <h2 id="选择器-2"><a href="#选择器-2" aria-hidden="true" class="header-anchor">#</a> +选择器</h2> <p><code>div + p</code></p> <p>选择 <code>&lt;div&gt;</code> 元素之后紧跟的每个 <code>&lt;p&gt;</code> 元素</p> <p>乍一听和上面的一样啊~</p> <p>其实是这样的：</p> <pre><code>&lt;div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+</code></pre> <p>上面的两个<code>&lt;p&gt;</code>，只有第一个<code>&lt;p&gt;</code>被选中，所以这里的紧跟是指同级的，相当于jQuery里面的<code>$('div').next('p')</code></p> <hr> <h2 id="选择器-3"><a href="#选择器-3" aria-hidden="true" class="header-anchor">#</a> ~选择器</h2> <p><code>p ~ ul</code></p> <p>选择所有的<code>&lt;p&gt;</code>之后的、同<code>&lt;p&gt;</code>同级的<code>&lt;ul&gt;</code></p> <pre><code>&lt;p&gt;The first paragraph.&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;Coffee&lt;/li&gt;
+    &lt;li&gt;Tea&lt;/li&gt;
+    &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Another list&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;Coffee&lt;/li&gt;
+    &lt;li&gt;Tea&lt;/li&gt;
+    &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Coffee&lt;/li&gt;
+        &lt;li&gt;Tea&lt;/li&gt;
+        &lt;li&gt;Milk&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre> <p>上面的前两个<code>&lt;ul&gt;</code>会被选中，第三个<code>&lt;ul&gt;</code>不会，相当于jQuery里面的<code>$('p').nextAll('ul')</code></p> <hr> <h3 id="_20150130补充"><a href="#_20150130补充" aria-hidden="true" class="header-anchor">#</a> 20150130补充</h3> <p><code>[attribute~=value]</code>:contains <strong>space-sperated</strong> value(WORD)
+<code>[attribute*=value]</code>:contains <strong>SUBSTR</strong> <code>[attribute|=value]</code>:started with value which is <strong>hyphen-seperated</strong> <code>[attribute^=value]</code>:started with <strong>SUBSTR</strong> <code>[attribute$=value]</code>:ended with <strong>SUBSTR</strong></p></div></section> <footer class="footer">
+  Copyright © 2019 <br>Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">
+    VuePress</a> | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">
+    Simple
+  </a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.99e05f95.js" defer></script><script src="/assets/js/2.93e54dd3.js" defer></script><script src="/assets/js/49.f39ceb73.js" defer></script>
+  </body>
+</html>

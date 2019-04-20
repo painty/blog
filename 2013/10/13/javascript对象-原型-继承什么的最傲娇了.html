@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Javascript对象、原型、继承什么的最傲娇了 | Bobscript</title>
+    <meta name="description" content="白天切图，晚上切菜">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c745cea3.css" as="style"><link rel="preload" href="/assets/js/app.99e05f95.js" as="script"><link rel="preload" href="/assets/js/2.93e54dd3.js" as="script"><link rel="preload" href="/assets/js/39.dc3abd65.js" as="script"><link rel="prefetch" href="/assets/js/10.be48f157.js"><link rel="prefetch" href="/assets/js/11.7b371b13.js"><link rel="prefetch" href="/assets/js/12.c7ecc6e8.js"><link rel="prefetch" href="/assets/js/13.92f71886.js"><link rel="prefetch" href="/assets/js/14.d0ddbc49.js"><link rel="prefetch" href="/assets/js/15.22e5715b.js"><link rel="prefetch" href="/assets/js/16.935d7e52.js"><link rel="prefetch" href="/assets/js/17.2bf640e4.js"><link rel="prefetch" href="/assets/js/18.767ea5cf.js"><link rel="prefetch" href="/assets/js/19.1f08efcc.js"><link rel="prefetch" href="/assets/js/20.971af43e.js"><link rel="prefetch" href="/assets/js/21.0f961777.js"><link rel="prefetch" href="/assets/js/22.1f524836.js"><link rel="prefetch" href="/assets/js/23.17e819da.js"><link rel="prefetch" href="/assets/js/24.c8c3eace.js"><link rel="prefetch" href="/assets/js/25.269908c9.js"><link rel="prefetch" href="/assets/js/26.5266162e.js"><link rel="prefetch" href="/assets/js/27.1a1438e2.js"><link rel="prefetch" href="/assets/js/28.0eaa4122.js"><link rel="prefetch" href="/assets/js/29.7e470fb7.js"><link rel="prefetch" href="/assets/js/3.53dd634a.js"><link rel="prefetch" href="/assets/js/30.b6b84a09.js"><link rel="prefetch" href="/assets/js/31.048567d6.js"><link rel="prefetch" href="/assets/js/32.145ad0b8.js"><link rel="prefetch" href="/assets/js/33.62e812bd.js"><link rel="prefetch" href="/assets/js/34.31c05704.js"><link rel="prefetch" href="/assets/js/35.ba79a7a0.js"><link rel="prefetch" href="/assets/js/36.67a5b25b.js"><link rel="prefetch" href="/assets/js/37.b6b5b0f4.js"><link rel="prefetch" href="/assets/js/38.8897bd4e.js"><link rel="prefetch" href="/assets/js/4.da34f57a.js"><link rel="prefetch" href="/assets/js/40.329d1f91.js"><link rel="prefetch" href="/assets/js/41.57cd30e9.js"><link rel="prefetch" href="/assets/js/42.8b4613f5.js"><link rel="prefetch" href="/assets/js/43.9854386a.js"><link rel="prefetch" href="/assets/js/44.3b4a01f5.js"><link rel="prefetch" href="/assets/js/45.3ca8aa82.js"><link rel="prefetch" href="/assets/js/46.055f433b.js"><link rel="prefetch" href="/assets/js/47.acfcb947.js"><link rel="prefetch" href="/assets/js/48.9de647b4.js"><link rel="prefetch" href="/assets/js/49.f39ceb73.js"><link rel="prefetch" href="/assets/js/5.7bbbf963.js"><link rel="prefetch" href="/assets/js/50.f5907641.js"><link rel="prefetch" href="/assets/js/51.36e3efaa.js"><link rel="prefetch" href="/assets/js/52.d5ddfb61.js"><link rel="prefetch" href="/assets/js/53.ec2d3182.js"><link rel="prefetch" href="/assets/js/54.17874d42.js"><link rel="prefetch" href="/assets/js/55.145aac7c.js"><link rel="prefetch" href="/assets/js/56.7fd1efa2.js"><link rel="prefetch" href="/assets/js/6.ccc445b6.js"><link rel="prefetch" href="/assets/js/7.b43b9a6e.js"><link rel="prefetch" href="/assets/js/8.a4af12d5.js"><link rel="prefetch" href="/assets/js/9.9ac313ca.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c745cea3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="白天切图，晚上切菜" class="router-link-active">
+      Bobscript
+    </a> <div style="clear: both"></div></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      Javascript对象、原型、继承什么的最傲娇了
+    </h1> <time datetime="2013-10-13" title="2013-10-13" pubdate="pubdate" class="post-date">
+  5 years ago
+</time></div> <div class="content default"><h1 id="javascript对象、原型、继承什么的最傲娇了"><a href="#javascript对象、原型、继承什么的最傲娇了" aria-hidden="true" class="header-anchor">#</a> Javascript对象、原型、继承什么的最傲娇了</h1> <p>最近辞职鸟，又可以开心地无打扰地学习了。O(∩_∩)O~
+现实是残酷的，JS的对象和继承这部分看了好几个月了，还是没有进展，理解起来一团糟，超级抽象。
+于是我开始自怨自艾，我开始后悔当初没有选择计算机专业，于是……</p> <p>你是否和我一样的烦恼？
+打住！
+这不是你的错！</p> <p>说说个人的感觉吧，W3School什么的讲得不错，不过太简略了，而网上百度出来的相关文章良莠不齐，好的文章多半是一些大牛的博客，需要一些背景知识才能看懂，而且他们好喜欢拿Java来类比，难不成为了这个比喻我还要去学习Java 囧rz……余下的，多数文章都是COPY，举的例子都那么雷同，正当我迷茫的时候，突然想起还有书这位好家伙。</p> <p>书本是个好东西啊啊啊！！！
+书的优点：知识系统！知识专业！表达严密！</p> <h1 id="下面进入正题"><a href="#下面进入正题" aria-hidden="true" class="header-anchor">#</a> 下面进入正题</h1> <p>我觉得上面的吐槽才是主要的内容，下面的主要是笔记吧。</p> <p>Javascript的对象这一节相信不是那么简单就能理解的，个人觉得主要的原因不是难，而是知识点比较广，另外比较抽象而又缺少实践。</p> <p>先有几个概念要弄清：</p> <ol><li>先是对象的概念，这里不说了，为啥呢，因为网上的文章这部分都讲烂了。//感觉就是该详细的地方略过，不该详细的地方使劲举例。</li> <li>然后是原型（prototype），网上说那么玄干嘛！说白了就是一个特殊的实例。对一个构造函数A来说，A的原型就是A的一个特殊的实例！用A.prototype来表示。这里补充一下，<strong>原型是对构造函数来说的</strong>，实例没有原型的说法，不过在浏览器内部，每一个实例会有一个_proto_的指针，指向的是把a生出来的时候A的原型，这个指向不可见，不过在chrome或者FF的控制台里面看得到，用a._proto_表示的，并且A的prototype和a的_proto_不是永远相等的！当a从A生出来之后，如果执行A.prototyoe=YYY，a._proto_就和A.prototype没有一毛钱关系了！A的原型就是YYY了，后来A生出来的宝宝的_proto_也是指向YYY了，而a._proto_还是指向最初的那个A的原型。</li></ol> <p>上面的prototype这个概念把我搞得好辛苦啊，还是看书好，对了，这本书就是《Javascript高级程序设计》Professional.JavaScript.for.Web.Developers.已经出到第三版了，我看的是第二版的。
+然后就是几个检验实例和构造函数之间关系的函数。</p> <ul><li><strong>constructor</strong>属性(Object.prototype.constructor)：指向创造prototype属性所在的构造函数，是prototype的一个属性，可修改，除非是基本数据类型1、'1'、true。例：alert(a.constructor) //A</li> <li><strong>instanceof</strong>操作符:检查实例是否指向某个构造函数的原型。constructor属性指向是唯一的，instanceof就不是了，a可能既是A的实例又是B的实例，同时所有的实例都是Object的实例。例：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>function A(){};
+function B(){};
+B.prototype = new A();
+b = new B();
+b instanceof B; //true
+b instanceof B; //true
+b instanceof Object; //true
+</code></pre></div><ul><li>**isPrototypeOf()**方法：检测某个原型是否是被某个实例所指向，正好和instanceof操作符逆向的操作，也就是说a instanceof A 等于 A.prototype.isPrototypeOf(a)。
+继续使用上面的例子，那么B.prototype.isPrototypeOf(b)就是true，A.prototype.isPrototypeOf(b)也是true。
+注意这里的A.prototype和B.prototype是不等的，然后，B.protoype有一个隐藏的_proto_属性指向了A.prototype，而b的_proto_指向B.prototype，所以b当然也指向A.prototype啦。</li> <li>**hasOwnProperty()**方法：如果实例的某个属性来自于实例，返回true，其余的比如来自于原型啊，就false。例：alert(a.hasOwnProperty(&quot;name&quot;))</li> <li><strong>in</strong>操作符：不管实例的某个属性来自于实例自身还是实例通过原型访问到的，只要存在，都是true。例：alert(&quot;name&quot; in a)。  PS:对于in操作符还有一个地方出现就是for in循环。</li></ul> <p>来，我们做点题目巩固一下。</p> <div class="language- extra-class"><pre class="language-text"><code>function A(){};
+function B(){};
+function C(){};
+B.prototype = new A();
+b = new B();
+B.prototype = new C();
+b2 = new B();
+b instanceof A; //true
+b instanceof B; //false
+b instanceof C; //false
+b instanceof Object; //true 
+b.constructor; //A
+b2.constructor; //C
+</code></pre></div><p>看完了还是一头雾水？那么……看书去吧o(<em>￣▽￣</em>)o</p></div></section> <footer class="footer">
+  Copyright © 2019 <br>Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">
+    VuePress</a> | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">
+    Simple
+  </a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.99e05f95.js" defer></script><script src="/assets/js/2.93e54dd3.js" defer></script><script src="/assets/js/39.dc3abd65.js" defer></script>
+  </body>
+</html>

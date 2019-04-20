@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JS对象中数字命名的属性名（jQuery对象原来真的是对象） | Bobscript</title>
+    <meta name="description" content="白天切图，晚上切菜">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c745cea3.css" as="style"><link rel="preload" href="/assets/js/app.99e05f95.js" as="script"><link rel="preload" href="/assets/js/2.93e54dd3.js" as="script"><link rel="preload" href="/assets/js/30.b6b84a09.js" as="script"><link rel="prefetch" href="/assets/js/10.be48f157.js"><link rel="prefetch" href="/assets/js/11.7b371b13.js"><link rel="prefetch" href="/assets/js/12.c7ecc6e8.js"><link rel="prefetch" href="/assets/js/13.92f71886.js"><link rel="prefetch" href="/assets/js/14.d0ddbc49.js"><link rel="prefetch" href="/assets/js/15.22e5715b.js"><link rel="prefetch" href="/assets/js/16.935d7e52.js"><link rel="prefetch" href="/assets/js/17.2bf640e4.js"><link rel="prefetch" href="/assets/js/18.767ea5cf.js"><link rel="prefetch" href="/assets/js/19.1f08efcc.js"><link rel="prefetch" href="/assets/js/20.971af43e.js"><link rel="prefetch" href="/assets/js/21.0f961777.js"><link rel="prefetch" href="/assets/js/22.1f524836.js"><link rel="prefetch" href="/assets/js/23.17e819da.js"><link rel="prefetch" href="/assets/js/24.c8c3eace.js"><link rel="prefetch" href="/assets/js/25.269908c9.js"><link rel="prefetch" href="/assets/js/26.5266162e.js"><link rel="prefetch" href="/assets/js/27.1a1438e2.js"><link rel="prefetch" href="/assets/js/28.0eaa4122.js"><link rel="prefetch" href="/assets/js/29.7e470fb7.js"><link rel="prefetch" href="/assets/js/3.53dd634a.js"><link rel="prefetch" href="/assets/js/31.048567d6.js"><link rel="prefetch" href="/assets/js/32.145ad0b8.js"><link rel="prefetch" href="/assets/js/33.62e812bd.js"><link rel="prefetch" href="/assets/js/34.31c05704.js"><link rel="prefetch" href="/assets/js/35.ba79a7a0.js"><link rel="prefetch" href="/assets/js/36.67a5b25b.js"><link rel="prefetch" href="/assets/js/37.b6b5b0f4.js"><link rel="prefetch" href="/assets/js/38.8897bd4e.js"><link rel="prefetch" href="/assets/js/39.dc3abd65.js"><link rel="prefetch" href="/assets/js/4.da34f57a.js"><link rel="prefetch" href="/assets/js/40.329d1f91.js"><link rel="prefetch" href="/assets/js/41.57cd30e9.js"><link rel="prefetch" href="/assets/js/42.8b4613f5.js"><link rel="prefetch" href="/assets/js/43.9854386a.js"><link rel="prefetch" href="/assets/js/44.3b4a01f5.js"><link rel="prefetch" href="/assets/js/45.3ca8aa82.js"><link rel="prefetch" href="/assets/js/46.055f433b.js"><link rel="prefetch" href="/assets/js/47.acfcb947.js"><link rel="prefetch" href="/assets/js/48.9de647b4.js"><link rel="prefetch" href="/assets/js/49.f39ceb73.js"><link rel="prefetch" href="/assets/js/5.7bbbf963.js"><link rel="prefetch" href="/assets/js/50.f5907641.js"><link rel="prefetch" href="/assets/js/51.36e3efaa.js"><link rel="prefetch" href="/assets/js/52.d5ddfb61.js"><link rel="prefetch" href="/assets/js/53.ec2d3182.js"><link rel="prefetch" href="/assets/js/54.17874d42.js"><link rel="prefetch" href="/assets/js/55.145aac7c.js"><link rel="prefetch" href="/assets/js/56.7fd1efa2.js"><link rel="prefetch" href="/assets/js/6.ccc445b6.js"><link rel="prefetch" href="/assets/js/7.b43b9a6e.js"><link rel="prefetch" href="/assets/js/8.a4af12d5.js"><link rel="prefetch" href="/assets/js/9.9ac313ca.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c745cea3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="白天切图，晚上切菜" class="router-link-active">
+      Bobscript
+    </a> <div style="clear: both"></div></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      JS对象中数字命名的属性名（jQuery对象原来真的是对象）
+    </h1> <time datetime="2014-7-5" title="2014-7-5" pubdate="pubdate" class="post-date">
+  4 years ago
+</time></div> <div class="content default"><h1 id="js对象中数字命名的属性名（jquery对象原来真的是对象）"><a href="#js对象中数字命名的属性名（jquery对象原来真的是对象）" aria-hidden="true" class="header-anchor">#</a> JS对象中数字命名的属性名（jQuery对象原来真的是对象）</h1> <p>标题很奇怪，这不废话嘛~</p> <p>平时要从一组jQuery对象里面取原生DOM对象，常用的方法是使用<code>$('div')[0]</code>这样来取得其中的第一个div，久而久之，我习惯性地把<code>$('div')</code>当成是一个数组了，当然虽然知道它是对象，但是脑袋就是转不过弯来。</p> <pre><code>&lt;div&gt;1&lt;/div&gt;
+&lt;div&gt;2&lt;/div&gt;
+&lt;div&gt;3&lt;/div&gt;
+</code></pre> <p>对于上面的HTML代码，使用<code>$('div')</code>可以取得含有这3个DOM对象的一个jQuery对象，要取第三个div就使用<code>$('div')[2]</code>，看起来很像是取数组的第三个值是不是，是不是，是不是？看一下这个jQuery对象是怎么构成的吧：</p> <p><img src="/assets/img/48257c.648257cb.jpg" alt="Console出来的jQuery对象"></p> <p>首先再次确认了它是一个对象，然后，发现，原来所谓的<code>1</code>、<code>2</code>、<code>3</code>只是一个属性名。</p> <p>对象的属性访问方式有两种，一种是<code>obj.prop1</code>，一种是<code>obj[&quot;prop1&quot;]</code>，不过如果使用前者是有限制的，那就是这个属性名只能是合法的标识符，即使用字母或者<code>_</code>或者<code>$</code>开头，同时也不能是保留字，比如class；后者则没有这些限制。</p> <p>对应这个例子，就不难理解啦。</p> <blockquote><p>参考链接：<a href="http://stackoverflow.com/questions/16908476/javascript-object-property-name-as-number" target="_blank" rel="noopener noreferrer">javascript object property name as number<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote></div></section> <footer class="footer">
+  Copyright © 2019 <br>Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">
+    VuePress</a> | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">
+    Simple
+  </a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.99e05f95.js" defer></script><script src="/assets/js/2.93e54dd3.js" defer></script><script src="/assets/js/30.b6b84a09.js" defer></script>
+  </body>
+</html>

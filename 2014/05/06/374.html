@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CSS实现大于父元素宽度的图片居中 | Bobscript</title>
+    <meta name="description" content="白天切图，晚上切菜">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c745cea3.css" as="style"><link rel="preload" href="/assets/js/app.99e05f95.js" as="script"><link rel="preload" href="/assets/js/2.93e54dd3.js" as="script"><link rel="preload" href="/assets/js/26.5266162e.js" as="script"><link rel="prefetch" href="/assets/js/10.be48f157.js"><link rel="prefetch" href="/assets/js/11.7b371b13.js"><link rel="prefetch" href="/assets/js/12.c7ecc6e8.js"><link rel="prefetch" href="/assets/js/13.92f71886.js"><link rel="prefetch" href="/assets/js/14.d0ddbc49.js"><link rel="prefetch" href="/assets/js/15.22e5715b.js"><link rel="prefetch" href="/assets/js/16.935d7e52.js"><link rel="prefetch" href="/assets/js/17.2bf640e4.js"><link rel="prefetch" href="/assets/js/18.767ea5cf.js"><link rel="prefetch" href="/assets/js/19.1f08efcc.js"><link rel="prefetch" href="/assets/js/20.971af43e.js"><link rel="prefetch" href="/assets/js/21.0f961777.js"><link rel="prefetch" href="/assets/js/22.1f524836.js"><link rel="prefetch" href="/assets/js/23.17e819da.js"><link rel="prefetch" href="/assets/js/24.c8c3eace.js"><link rel="prefetch" href="/assets/js/25.269908c9.js"><link rel="prefetch" href="/assets/js/27.1a1438e2.js"><link rel="prefetch" href="/assets/js/28.0eaa4122.js"><link rel="prefetch" href="/assets/js/29.7e470fb7.js"><link rel="prefetch" href="/assets/js/3.53dd634a.js"><link rel="prefetch" href="/assets/js/30.b6b84a09.js"><link rel="prefetch" href="/assets/js/31.048567d6.js"><link rel="prefetch" href="/assets/js/32.145ad0b8.js"><link rel="prefetch" href="/assets/js/33.62e812bd.js"><link rel="prefetch" href="/assets/js/34.31c05704.js"><link rel="prefetch" href="/assets/js/35.ba79a7a0.js"><link rel="prefetch" href="/assets/js/36.67a5b25b.js"><link rel="prefetch" href="/assets/js/37.b6b5b0f4.js"><link rel="prefetch" href="/assets/js/38.8897bd4e.js"><link rel="prefetch" href="/assets/js/39.dc3abd65.js"><link rel="prefetch" href="/assets/js/4.da34f57a.js"><link rel="prefetch" href="/assets/js/40.329d1f91.js"><link rel="prefetch" href="/assets/js/41.57cd30e9.js"><link rel="prefetch" href="/assets/js/42.8b4613f5.js"><link rel="prefetch" href="/assets/js/43.9854386a.js"><link rel="prefetch" href="/assets/js/44.3b4a01f5.js"><link rel="prefetch" href="/assets/js/45.3ca8aa82.js"><link rel="prefetch" href="/assets/js/46.055f433b.js"><link rel="prefetch" href="/assets/js/47.acfcb947.js"><link rel="prefetch" href="/assets/js/48.9de647b4.js"><link rel="prefetch" href="/assets/js/49.f39ceb73.js"><link rel="prefetch" href="/assets/js/5.7bbbf963.js"><link rel="prefetch" href="/assets/js/50.f5907641.js"><link rel="prefetch" href="/assets/js/51.36e3efaa.js"><link rel="prefetch" href="/assets/js/52.d5ddfb61.js"><link rel="prefetch" href="/assets/js/53.ec2d3182.js"><link rel="prefetch" href="/assets/js/54.17874d42.js"><link rel="prefetch" href="/assets/js/55.145aac7c.js"><link rel="prefetch" href="/assets/js/56.7fd1efa2.js"><link rel="prefetch" href="/assets/js/6.ccc445b6.js"><link rel="prefetch" href="/assets/js/7.b43b9a6e.js"><link rel="prefetch" href="/assets/js/8.a4af12d5.js"><link rel="prefetch" href="/assets/js/9.9ac313ca.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c745cea3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="白天切图，晚上切菜" class="router-link-active">
+      Bobscript
+    </a> <div style="clear: both"></div></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      CSS实现大于父元素宽度的图片居中
+    </h1> <time datetime="2014-5-6" title="2014-5-6" pubdate="pubdate" class="post-date">
+  4 years ago
+</time></div> <div class="content default"><h1 id="css实现大于父元素宽度的图片居中"><a href="#css实现大于父元素宽度的图片居中" aria-hidden="true" class="header-anchor">#</a> CSS实现大于父元素宽度的图片居中</h1> <p>通常在Banner的时候需要居中，而且Banner通常都是比较宽的。如果当前页面比Banner宽，那么<code>text-align:center</code>即可。</p> <p><img src="/assets/img/2f2ed7.62f2ed7b.jpg" alt="图片居中演示"></p> <p>不过当页面缩小的时候，图片的左边就会抵住窗口左边，不会随着窗口的缩小而左移。</p> <p>DEMO演示：<a href="/demo/2014/05/06/610150091.html" target="_blank">当父元素小于图片宽度的时候 图片<strong>不居中</strong></a></p> <p>上面的演示大家可以改变窗口来看。</p> <p>解决的方法有三种：</p> <h2 id="方法一："><a href="#方法一：" aria-hidden="true" class="header-anchor">#</a> 方法一：</h2> <p>这个是最先想到的，就是把图片作为背景来设置到Banner上面。</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token selector">.banner</span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url(banner.jpg)</span> center top no-repeat<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span>200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>banner<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>优点：便签少
+缺点：需要手动设定Banner的高度</p> <h2 id="方法二："><a href="#方法二：" aria-hidden="true" class="header-anchor">#</a> 方法二：</h2> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token selector">.banner</span><span class="token punctuation">{</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.banner img</span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">margin-left</span><span class="token punctuation">:</span> -640px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>banner<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>banner.jpg<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="方法三："><a href="#方法三：" aria-hidden="true" class="header-anchor">#</a> 方法三：</h2> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
+<span class="token selector">.banner</span><span class="token punctuation">{</span>
+    <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.banner img</span><span class="token punctuation">{</span>
+    <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+    <span class="token property">left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+    <span class="token property">margin-left</span><span class="token punctuation">:</span> -640px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>banner<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>banner.jpg<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>修正之后的：</p> <p>上面三种方法的DEMO演示：<a href="/demo/2014/05/06/2689771992.html" target="_blank">超过父元素依然居中的图片</a></p> <p>##总结：</p> <p>方法二和三的原理类似，就是用先偏离父元素宽度的50%，这时候图片的左边缘到达了父元素的中间，然后通过负的margin值把图片拉到中心，值是图片宽度的一半，这样图片的中轴线就和父元素的中心线重合了，达到了居中的效果，而父元素的<code>overflow:hidden</code>超出隐藏，保证了不会出现横向的水平滚动条。</p></div></section> <footer class="footer">
+  Copyright © 2019 <br>Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">
+    VuePress</a> | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">
+    Simple
+  </a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.99e05f95.js" defer></script><script src="/assets/js/2.93e54dd3.js" defer></script><script src="/assets/js/26.5266162e.js" defer></script>
+  </body>
+</html>

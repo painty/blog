@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>轻松认识CSS BFC | Bobscript</title>
+    <meta name="description" content="白天切图，晚上切菜">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c745cea3.css" as="style"><link rel="preload" href="/assets/js/app.99e05f95.js" as="script"><link rel="preload" href="/assets/js/2.93e54dd3.js" as="script"><link rel="preload" href="/assets/js/21.0f961777.js" as="script"><link rel="prefetch" href="/assets/js/10.be48f157.js"><link rel="prefetch" href="/assets/js/11.7b371b13.js"><link rel="prefetch" href="/assets/js/12.c7ecc6e8.js"><link rel="prefetch" href="/assets/js/13.92f71886.js"><link rel="prefetch" href="/assets/js/14.d0ddbc49.js"><link rel="prefetch" href="/assets/js/15.22e5715b.js"><link rel="prefetch" href="/assets/js/16.935d7e52.js"><link rel="prefetch" href="/assets/js/17.2bf640e4.js"><link rel="prefetch" href="/assets/js/18.767ea5cf.js"><link rel="prefetch" href="/assets/js/19.1f08efcc.js"><link rel="prefetch" href="/assets/js/20.971af43e.js"><link rel="prefetch" href="/assets/js/22.1f524836.js"><link rel="prefetch" href="/assets/js/23.17e819da.js"><link rel="prefetch" href="/assets/js/24.c8c3eace.js"><link rel="prefetch" href="/assets/js/25.269908c9.js"><link rel="prefetch" href="/assets/js/26.5266162e.js"><link rel="prefetch" href="/assets/js/27.1a1438e2.js"><link rel="prefetch" href="/assets/js/28.0eaa4122.js"><link rel="prefetch" href="/assets/js/29.7e470fb7.js"><link rel="prefetch" href="/assets/js/3.53dd634a.js"><link rel="prefetch" href="/assets/js/30.b6b84a09.js"><link rel="prefetch" href="/assets/js/31.048567d6.js"><link rel="prefetch" href="/assets/js/32.145ad0b8.js"><link rel="prefetch" href="/assets/js/33.62e812bd.js"><link rel="prefetch" href="/assets/js/34.31c05704.js"><link rel="prefetch" href="/assets/js/35.ba79a7a0.js"><link rel="prefetch" href="/assets/js/36.67a5b25b.js"><link rel="prefetch" href="/assets/js/37.b6b5b0f4.js"><link rel="prefetch" href="/assets/js/38.8897bd4e.js"><link rel="prefetch" href="/assets/js/39.dc3abd65.js"><link rel="prefetch" href="/assets/js/4.da34f57a.js"><link rel="prefetch" href="/assets/js/40.329d1f91.js"><link rel="prefetch" href="/assets/js/41.57cd30e9.js"><link rel="prefetch" href="/assets/js/42.8b4613f5.js"><link rel="prefetch" href="/assets/js/43.9854386a.js"><link rel="prefetch" href="/assets/js/44.3b4a01f5.js"><link rel="prefetch" href="/assets/js/45.3ca8aa82.js"><link rel="prefetch" href="/assets/js/46.055f433b.js"><link rel="prefetch" href="/assets/js/47.acfcb947.js"><link rel="prefetch" href="/assets/js/48.9de647b4.js"><link rel="prefetch" href="/assets/js/49.f39ceb73.js"><link rel="prefetch" href="/assets/js/5.7bbbf963.js"><link rel="prefetch" href="/assets/js/50.f5907641.js"><link rel="prefetch" href="/assets/js/51.36e3efaa.js"><link rel="prefetch" href="/assets/js/52.d5ddfb61.js"><link rel="prefetch" href="/assets/js/53.ec2d3182.js"><link rel="prefetch" href="/assets/js/54.17874d42.js"><link rel="prefetch" href="/assets/js/55.145aac7c.js"><link rel="prefetch" href="/assets/js/56.7fd1efa2.js"><link rel="prefetch" href="/assets/js/6.ccc445b6.js"><link rel="prefetch" href="/assets/js/7.b43b9a6e.js"><link rel="prefetch" href="/assets/js/8.a4af12d5.js"><link rel="prefetch" href="/assets/js/9.9ac313ca.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c745cea3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="白天切图，晚上切菜" class="router-link-active">
+      Bobscript
+    </a> <div style="clear: both"></div></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      轻松认识CSS BFC
+    </h1> <time datetime="2013-5-19" title="2013-5-19" pubdate="pubdate" class="post-date">
+  5 years ago
+</time></div> <div class="content default"><h1 id="轻松认识css-bfc"><a href="#轻松认识css-bfc" aria-hidden="true" class="header-anchor">#</a> 轻松认识CSS BFC</h1> <p>对于刚接触前端的同学来说，BFC这个概念有点陌生，因为很少见到明确定义，有点抽象，而且网上的文章说得有点玄乎，所以打算写一篇简单点的文章介绍。
+</p><h3>BFC（Block Formatting Context）到底是什么？</h3>
+当涉及到可视化布局的时候，Block Formatting Context提供了一个环境，HTML元素在这个环境中按照一定规则进行布局，一个环境中的元素不会影响到其它环境中的布局。<p></p> <p>比如浮动元素会形成BFC，浮动元素内部子元素主要受各自浮动元素影响，两个浮动元素各自的子元素是互不影响的。不受影响具体表现的一个例子就是，对某个BFC中的元素设置margin，不会引起旁边BFC的变化。所以，这里的没有影响说的是<span style="color:#ff0000;">BFC中的元素</span>不会对<span style="color:#ff0000;">其它BFC</span>造成影响，不是说BFC本身不影响另一个BFC。</p> <p>就像把家里的糖果放一个盒子，玩具放另一个盒子，糖果和杯子就完全隔离了互不影响，但是两个盒子还是会互相影响对方的。当初看的很多文章这一步没有讲清楚，让我疑惑了好久。
+</p><h3>BFC的定义</h3>
+BFC是 W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行定位，以及与其他元素的关系和相互作用。<p></p> <p>在创建了BFC的元素中，其子元素会一个接一个地放置。垂直方向上他们的起点是一个包含块的顶部，两个相邻的元素之间的垂直距离取决于 ‘margin’ 特性。在同一个BFC中相邻的块级元素的垂直边距会折叠（collapse）。</p> <p>在BFC中，每一个元素左外边与包含块的左边相接触（对于从右到左的格式化，右外边接触右边）， 即使存在浮动也是如此（尽管一个元素的内容区域会由于浮动而压缩），除非这个元素也创建了一个新的 Block Formatting Context 。
+</p><h3>怎样才能形成BFC</h3>
+满足下面任何一个条件即可：
+<ul><li>float的值不为none。</li> <li>overflow的值不为visible。</li> <li>display的值为table-cell, table-caption, inline-block中的任何一个。</li> <li>position的值不为relative和static。</li></ul> <h3>BFC的作用</h3> <ol><li><strong>不和浮动元素重叠</strong>
+如果一个浮动元素后面跟着一个非浮动的元素，那么就会产生一个覆盖的现象，很多自适应的两栏布局就是这么做的。比如下图的效果，参考例子 &lt;div style=&quot;float:left; border: 2px solid red&quot;&gt; 123&lt;/div&gt; &lt;p style=&quot;border: 2px solid blue;display:block;overflow:hidden;*zoom:1&quot;&gt; The quick brown fox jumped over the  4seohunt.com lazy  dog's back. The quick brown fox jumped over the lazy dog's back. The quick brown fox jumped over the lazy dog's back. The quick brown fox jumped over the lazy dog's back. The quick brown fox jumped over the lazy dog's back. &lt;/p&gt;</li> <li><strong>清除元素内部浮动</strong>
+只要把父元素设为BFC就可以清理子元素的浮动了，最常见的用法就是在父元素上设置overflow: hidden样式，对于IE6加上zoom:1就可以了(IE Haslayout)。</li> <li><strong>嵌套元素Margin边距折叠问题的解决</strong>
+按照BFC的定义，只有同属于一个BFC时，两个元素才有可能发生垂直Margin的重叠，这个包括相邻元素，嵌套元素，只要他们之间没有阻挡(例如边框，非空内容，padding等)就会发生margin重叠。 因此要解决margin重叠问题，只要让它们不在同一个BFC就行了，但是对于两个相邻元素来说，意义不大，没有必要给它们加个外壳，但是对于嵌套元素来说就很有必要了，只要把父元素设为BFC就可以了。这样子元素的margin就不会和父元素的margin发生重叠了。</li></ol>
+DEMO：<p></p> <img title="CSS_BFC_general" src="/assets/img/d4797c.ed4797cd.jpg" alt="" width="407" height="205"> <p>&lt;div style=&quot;display: inline-block;background-color: green;width: 50px;&quot;&gt;
+&lt;p style=&quot;margin-right: 1000px;&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div style=&quot;display: inline-block;background-color: red;width: 50px;&quot;&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;</p> <p>可以看到，第一个div中的p元素虽然设置了一个较大的margin-right，但是对后面的div没有任何影响。</p> <p>PS：说到inline-block自然不能忘记IE6、7这两个老不死的家伙，所以上面的例子在IE6、7是看不到效果的，有机会再讲这一点。</p> <p></p></div></section> <footer class="footer">
+  Copyright © 2019 <br>Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">
+    VuePress</a> | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">
+    Simple
+  </a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.99e05f95.js" defer></script><script src="/assets/js/2.93e54dd3.js" defer></script><script src="/assets/js/21.0f961777.js" defer></script>
+  </body>
+</html>

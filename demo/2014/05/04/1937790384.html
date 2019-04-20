@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Doc</title>
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript">
+	// creates a global "addWheelListener" method
+	// example: addWheelListener( elem, function( e ) { console.log( e.deltaY ); e.preventDefault(); } );
+	(function(window,document) {
+
+	    var prefix = "", _addEventListener, onwheel, support;
+
+	    // detect event model
+	    if ( window.addEventListener ) {
+	        _addEventListener = "addEventListener";
+	    } else {
+	        _addEventListener = "attachEvent";
+	        prefix = "on";
+	    }
+
+	    // detect available wheel event
+	    support = "onwheel" in document.createElement("div") ? "wheel" : // Modern browsers support "wheel"
+	              document.onmousewheel !== undefined ? "mousewheel" : // Webkit and IE support at least "mousewheel"
+	              "DOMMouseScroll"; // let's assume that remaining browsers are older Firefox
+
+	    window.addWheelListener = function( elem, callback, useCapture ) {
+	        _addWheelListener( elem, support, callback, useCapture );
+
+	        // handle MozMousePixelScroll in older Firefox
+	        if( support == "DOMMouseScroll" ) {
+	            _addWheelListener( elem, "MozMousePixelScroll", callback, useCapture );
+	        }
+	    };
+
+	    function _addWheelListener( elem, eventName, callback, useCapture ) {
+	        elem[ _addEventListener ]( prefix + eventName, support == "wheel" ? callback : function( originalEvent ) {
+	            !originalEvent && ( originalEvent = window.event );
+
+	            // create a normalized event object
+	            var event = {
+	                // keep a ref to the original event object
+	                originalEvent: originalEvent,
+	                target: originalEvent.target || originalEvent.srcElement,
+	                type: "wheel",
+	                deltaMode: originalEvent.type == "MozMousePixelScroll" ? 0 : 1,
+	                deltaX: 0,
+	                delatZ: 0,
+	                preventDefault: function() {
+	                    originalEvent.preventDefault ?
+	                        originalEvent.preventDefault() :
+	                        originalEvent.returnValue = false;
+	                }
+	            };
+	            
+	            // calculate deltaY (and deltaX) according to the event
+	            if ( support == "mousewheel" ) {
+	                event.deltaY = - 1/40 * originalEvent.wheelDelta;
+	                // Webkit also support wheelDeltaX
+	                originalEvent.wheelDeltaX && ( event.deltaX = - 1/40 * originalEvent.wheelDeltaX );
+	            } else {
+	                event.deltaY = originalEvent.detail;
+	            }
+
+	            // it's time to fire the callback
+	            return callback( event );
+
+	        }, useCapture || false );
+	    }
+
+	})(window,document);
+	</script>
+<style>
+.out{
+	width: 500px;
+	height: 50px;
+	overflow: auto;
+}
+.in{ width: 10000px; height: 50px; }
+</style>
+</head>
+<body>
+<div class="out">
+	<div class="in">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+<script>
+addWheelListener( document, act );
+function act(e){
+	e.preventDefault();
+	$('.out').stop(true,true).animate({
+		scrollLeft: '+='+ ( e.deltaY>0? 1 : -1 )*50
+	},100)
+}
+</script>
+</body>
+</html>

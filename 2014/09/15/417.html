@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>slice / splice / split ，晕了没？ | Bobscript</title>
+    <meta name="description" content="白天切图，晚上切菜">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c745cea3.css" as="style"><link rel="preload" href="/assets/js/app.99e05f95.js" as="script"><link rel="preload" href="/assets/js/2.93e54dd3.js" as="script"><link rel="preload" href="/assets/js/47.acfcb947.js" as="script"><link rel="prefetch" href="/assets/js/10.be48f157.js"><link rel="prefetch" href="/assets/js/11.7b371b13.js"><link rel="prefetch" href="/assets/js/12.c7ecc6e8.js"><link rel="prefetch" href="/assets/js/13.92f71886.js"><link rel="prefetch" href="/assets/js/14.d0ddbc49.js"><link rel="prefetch" href="/assets/js/15.22e5715b.js"><link rel="prefetch" href="/assets/js/16.935d7e52.js"><link rel="prefetch" href="/assets/js/17.2bf640e4.js"><link rel="prefetch" href="/assets/js/18.767ea5cf.js"><link rel="prefetch" href="/assets/js/19.1f08efcc.js"><link rel="prefetch" href="/assets/js/20.971af43e.js"><link rel="prefetch" href="/assets/js/21.0f961777.js"><link rel="prefetch" href="/assets/js/22.1f524836.js"><link rel="prefetch" href="/assets/js/23.17e819da.js"><link rel="prefetch" href="/assets/js/24.c8c3eace.js"><link rel="prefetch" href="/assets/js/25.269908c9.js"><link rel="prefetch" href="/assets/js/26.5266162e.js"><link rel="prefetch" href="/assets/js/27.1a1438e2.js"><link rel="prefetch" href="/assets/js/28.0eaa4122.js"><link rel="prefetch" href="/assets/js/29.7e470fb7.js"><link rel="prefetch" href="/assets/js/3.53dd634a.js"><link rel="prefetch" href="/assets/js/30.b6b84a09.js"><link rel="prefetch" href="/assets/js/31.048567d6.js"><link rel="prefetch" href="/assets/js/32.145ad0b8.js"><link rel="prefetch" href="/assets/js/33.62e812bd.js"><link rel="prefetch" href="/assets/js/34.31c05704.js"><link rel="prefetch" href="/assets/js/35.ba79a7a0.js"><link rel="prefetch" href="/assets/js/36.67a5b25b.js"><link rel="prefetch" href="/assets/js/37.b6b5b0f4.js"><link rel="prefetch" href="/assets/js/38.8897bd4e.js"><link rel="prefetch" href="/assets/js/39.dc3abd65.js"><link rel="prefetch" href="/assets/js/4.da34f57a.js"><link rel="prefetch" href="/assets/js/40.329d1f91.js"><link rel="prefetch" href="/assets/js/41.57cd30e9.js"><link rel="prefetch" href="/assets/js/42.8b4613f5.js"><link rel="prefetch" href="/assets/js/43.9854386a.js"><link rel="prefetch" href="/assets/js/44.3b4a01f5.js"><link rel="prefetch" href="/assets/js/45.3ca8aa82.js"><link rel="prefetch" href="/assets/js/46.055f433b.js"><link rel="prefetch" href="/assets/js/48.9de647b4.js"><link rel="prefetch" href="/assets/js/49.f39ceb73.js"><link rel="prefetch" href="/assets/js/5.7bbbf963.js"><link rel="prefetch" href="/assets/js/50.f5907641.js"><link rel="prefetch" href="/assets/js/51.36e3efaa.js"><link rel="prefetch" href="/assets/js/52.d5ddfb61.js"><link rel="prefetch" href="/assets/js/53.ec2d3182.js"><link rel="prefetch" href="/assets/js/54.17874d42.js"><link rel="prefetch" href="/assets/js/55.145aac7c.js"><link rel="prefetch" href="/assets/js/56.7fd1efa2.js"><link rel="prefetch" href="/assets/js/6.ccc445b6.js"><link rel="prefetch" href="/assets/js/7.b43b9a6e.js"><link rel="prefetch" href="/assets/js/8.a4af12d5.js"><link rel="prefetch" href="/assets/js/9.9ac313ca.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c745cea3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="白天切图，晚上切菜" class="router-link-active">
+      Bobscript
+    </a> <div style="clear: both"></div></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      slice / splice / split ，晕了没？
+    </h1> <time datetime="2014-9-15" title="2014-9-15" pubdate="pubdate" class="post-date">
+  4 years ago
+</time></div> <div class="content default"><h1 id="slice-splice-split-，晕了没？"><a href="#slice-splice-split-，晕了没？" aria-hidden="true" class="header-anchor">#</a> slice / splice / split ，晕了没？</h1> <p>slice / splice / split这三个方法，不仅单词拼写非常像，而且字符串和数组涉及其中几个方法，非常容易混淆，有必要写篇文章来记录一下。</p> <h2 id="数组array"><a href="#数组array" aria-hidden="true" class="header-anchor">#</a> 数组Array</h2> <h3 id="slice"><a href="#slice" aria-hidden="true" class="header-anchor">#</a> slice</h3> <pre><code>arrayObject.slice( start [,end] )
+</code></pre> <p><code>start</code> 开始选取的位置；如果为负，将从数组尾部开始算起。即-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</p> <p><code>end</code> 结束选取的位置。如果未指定该参数，那么切分的数组包含从 <code>start</code> 到数组结束的所有元素。如果为负，将从数组尾部开始算起。</p> <p>start含，end不含，所以选取的是 [start, end) 的前闭后开的区间。</p> <p>该方法并不会修改数组，而是返回一个子数组。</p> <h3 id="splice"><a href="#splice" aria-hidden="true" class="header-anchor">#</a> splice</h3> <pre><code>arrayObject.splice(index, howmany [,item1,.....,itemX] )
+</code></pre> <p><code>index</code>   进行操作的位置，为负则从数组尾部开始算起。</p> <p><code>howmany</code> 要删除的项目数量。如果设置为 0，则不会删除项目。
+<code>item1, ..., itemX</code>   向数组添加的新项目，用来替代前一个参数删掉的那些项目。</p> <p>splice() 方法会直接对数组进行修改。</p> <hr> <blockquote><p>上面两个方法怎么区分？splice比slice多了一个字母，所以功能更强大，参数更多，就这么记。</p> <p>上面提到的“位置”，即<code>start</code>、<code>end</code>、<code>index</code> 这些参数，我以前是按照第几个元素来理解的，不过经常会忘记到底包不包含，开区间还是闭区间；后来发现，<code>start</code>、<code>end</code>、<code>index</code> 其实指的是元素之间的空隙，而不是指的是某个元素。比如有7个元素的数组，那么就有8个空隙啦。0就表示第一个元素左边的空隙，1表示第一个元素右边的空隙，也就是第二个元素左边的空隙，以此类推；最后一个元素的右边空隙标记也是0，-1表示最后一个元素左边的空隙，同时也是倒数第二个元素右边的空隙，倒数第二个元素左边的空隙标记为-2，以此类推。arrayObject.slice( start [,end] )想象成在start和end空隙处插上两把刀，然后取出两刀间隔之间的内容。</p></blockquote> <hr> <h2 id="字符串string"><a href="#字符串string" aria-hidden="true" class="header-anchor">#</a> 字符串String</h2> <h3 id="slice-2"><a href="#slice-2" aria-hidden="true" class="header-anchor">#</a> slice</h3> <pre><code>stringObject.slice( start [,end] )
+</code></pre> <p>这个和数组的slice方法类似。</p> <h3 id="splice-无！"><a href="#splice-无！" aria-hidden="true" class="header-anchor">#</a> splice(无！)</h3> <p>**！！Strig没有splice方法！！**我是这么记的：String是不可改变的，Array的splice方法会改变数组，所以String没有这个方法！</p> <h3 id="split"><a href="#split" aria-hidden="true" class="header-anchor">#</a> split</h3> <pre><code>stringObject.split( separator [,howmany] )
+</code></pre> <p><code>separator</code>   字符串或正则表达式，从该参数指定的地方分割 stringObject。如果 separator 是包含子表达式的正则表达式，那么返回的数组中包括与这些子表达式匹配的字串，但不包括与整个正则表达式匹配的文本（每个子表达式匹配的结果会分别成为结果数组的项目）。
+<code>howmany</code> 该参数可指定返回的数组的最大长度。</p> <p>这个函数就是数组的join函数的逆向操作，所以当然是String独有的方法咯，数组是没有的。</p> <hr> <p>此外，字符串还有两个函数经常混淆的：</p> <h3 id="substr"><a href="#substr" aria-hidden="true" class="header-anchor">#</a> substr</h3> <pre><code>stringObject.substr( start [,length] )
+</code></pre> <p><code>start</code>   同上
+<code>length</code>  子串中的字符数，必须是数值，如果省略了该参数，则一直到结尾。</p> <h3 id="substring"><a href="#substring" aria-hidden="true" class="header-anchor">#</a> substring</h3> <pre><code>stringObject.substring( start [,stop] )
+</code></pre> <p>与 slice() 类似，不过，substring() 不接受负的参数（负数将会转换为0），此外，如果<code>start</code> &gt; <code>stop</code>，substring是会自动交换这两个参数的，而slice方法不会（<strong>特别注明</strong>：负数在slice中表示从逆向开始数，所以这里说的大小指的是空隙中左边的小，在右边的大）。</p> <hr> <p>8月份太忙了，一篇文章都没有。到了新的小组以后，就像到了另外一家公司一样。</p></div></section> <footer class="footer">
+  Copyright © 2019 <br>Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">
+    VuePress</a> | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">
+    Simple
+  </a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.99e05f95.js" defer></script><script src="/assets/js/2.93e54dd3.js" defer></script><script src="/assets/js/47.acfcb947.js" defer></script>
+  </body>
+</html>

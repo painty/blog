@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery append特性测试</title>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<style>
+	table{margin: 10px;}
+	.t1{border: 1px solid red;}
+	.t2{border: 1px solid blue;}
+	.t3{border: 1px solid green;}
+	.t4{border: 1px solid yellow;}
+</style>
+
+</head>
+<body>
+
+<table class="t1">
+	<tr>
+		<td>table 1</td>
+	</tr>
+</table>
+
+<table class="t2">
+	<tr>
+		<td>table 2</td>
+	</tr>
+</table>
+
+<table class="t3"></table>
+<table class="t4"></table>
+
+<script>
+	var tds=$('table tr');
+	$('table').on('click','td',function(){
+		$('table').append(tds);
+	});
+</script>
+</body>
+</html>

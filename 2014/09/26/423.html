@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>[译]HTML5 全屏Full-Screen API，支持Chrome、FF、IE11 | Bobscript</title>
+    <meta name="description" content="白天切图，晚上切菜">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c745cea3.css" as="style"><link rel="preload" href="/assets/js/app.99e05f95.js" as="script"><link rel="preload" href="/assets/js/2.93e54dd3.js" as="script"><link rel="preload" href="/assets/js/48.9de647b4.js" as="script"><link rel="prefetch" href="/assets/js/10.be48f157.js"><link rel="prefetch" href="/assets/js/11.7b371b13.js"><link rel="prefetch" href="/assets/js/12.c7ecc6e8.js"><link rel="prefetch" href="/assets/js/13.92f71886.js"><link rel="prefetch" href="/assets/js/14.d0ddbc49.js"><link rel="prefetch" href="/assets/js/15.22e5715b.js"><link rel="prefetch" href="/assets/js/16.935d7e52.js"><link rel="prefetch" href="/assets/js/17.2bf640e4.js"><link rel="prefetch" href="/assets/js/18.767ea5cf.js"><link rel="prefetch" href="/assets/js/19.1f08efcc.js"><link rel="prefetch" href="/assets/js/20.971af43e.js"><link rel="prefetch" href="/assets/js/21.0f961777.js"><link rel="prefetch" href="/assets/js/22.1f524836.js"><link rel="prefetch" href="/assets/js/23.17e819da.js"><link rel="prefetch" href="/assets/js/24.c8c3eace.js"><link rel="prefetch" href="/assets/js/25.269908c9.js"><link rel="prefetch" href="/assets/js/26.5266162e.js"><link rel="prefetch" href="/assets/js/27.1a1438e2.js"><link rel="prefetch" href="/assets/js/28.0eaa4122.js"><link rel="prefetch" href="/assets/js/29.7e470fb7.js"><link rel="prefetch" href="/assets/js/3.53dd634a.js"><link rel="prefetch" href="/assets/js/30.b6b84a09.js"><link rel="prefetch" href="/assets/js/31.048567d6.js"><link rel="prefetch" href="/assets/js/32.145ad0b8.js"><link rel="prefetch" href="/assets/js/33.62e812bd.js"><link rel="prefetch" href="/assets/js/34.31c05704.js"><link rel="prefetch" href="/assets/js/35.ba79a7a0.js"><link rel="prefetch" href="/assets/js/36.67a5b25b.js"><link rel="prefetch" href="/assets/js/37.b6b5b0f4.js"><link rel="prefetch" href="/assets/js/38.8897bd4e.js"><link rel="prefetch" href="/assets/js/39.dc3abd65.js"><link rel="prefetch" href="/assets/js/4.da34f57a.js"><link rel="prefetch" href="/assets/js/40.329d1f91.js"><link rel="prefetch" href="/assets/js/41.57cd30e9.js"><link rel="prefetch" href="/assets/js/42.8b4613f5.js"><link rel="prefetch" href="/assets/js/43.9854386a.js"><link rel="prefetch" href="/assets/js/44.3b4a01f5.js"><link rel="prefetch" href="/assets/js/45.3ca8aa82.js"><link rel="prefetch" href="/assets/js/46.055f433b.js"><link rel="prefetch" href="/assets/js/47.acfcb947.js"><link rel="prefetch" href="/assets/js/49.f39ceb73.js"><link rel="prefetch" href="/assets/js/5.7bbbf963.js"><link rel="prefetch" href="/assets/js/50.f5907641.js"><link rel="prefetch" href="/assets/js/51.36e3efaa.js"><link rel="prefetch" href="/assets/js/52.d5ddfb61.js"><link rel="prefetch" href="/assets/js/53.ec2d3182.js"><link rel="prefetch" href="/assets/js/54.17874d42.js"><link rel="prefetch" href="/assets/js/55.145aac7c.js"><link rel="prefetch" href="/assets/js/56.7fd1efa2.js"><link rel="prefetch" href="/assets/js/6.ccc445b6.js"><link rel="prefetch" href="/assets/js/7.b43b9a6e.js"><link rel="prefetch" href="/assets/js/8.a4af12d5.js"><link rel="prefetch" href="/assets/js/9.9ac313ca.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c745cea3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="白天切图，晚上切菜" class="router-link-active">
+      Bobscript
+    </a> <div style="clear: both"></div></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      [译]HTML5 全屏Full-Screen API，支持Chrome、FF、IE11
+    </h1> <time datetime="2014-9-26" title="2014-9-26" pubdate="pubdate" class="post-date">
+  4 years ago
+</time></div> <div class="content default"><h1 id="译-html5-全屏full-screen-api，支持chrome、ff、ie11"><a href="#译-html5-全屏full-screen-api，支持chrome、ff、ie11" aria-hidden="true" class="header-anchor">#</a> [译]HTML5 全屏Full-Screen API，支持Chrome、FF、IE11</h1> <h2 id="什么是full-screen-api"><a href="#什么是full-screen-api" aria-hidden="true" class="header-anchor">#</a> 什么是Full-Screen API</h2> <p>这个API允许单个的元素全屏显示，和F11全屏不同，这个API用来展示某个容器里面的图片、视频等。</p> <h2 id="支持的浏览器"><a href="#支持的浏览器" aria-hidden="true" class="header-anchor">#</a> 支持的浏览器</h2> <p>所有的最新浏览器，包括IE11呢。移动端的支持有限，不过没关系，反正移动端的浏览器都是近乎全屏了。</p> <p>因为这个API还没有规范，所以很可能以后会有改变，同时，使用起来也少不了各种浏览器厂商的前缀了。</p> <hr> <h2 id="javascript-部分的api"><a href="#javascript-部分的api" aria-hidden="true" class="header-anchor">#</a> Javascript 部分的API</h2> <p>下面的例子中，想要全屏显示的是ID为myimage的图片。先来看一下几个相应的方法。</p> <h3 id="_1-document-fullscreenenabled"><a href="#_1-document-fullscreenenabled" aria-hidden="true" class="header-anchor">#</a> 1. document.fullscreenEnabled</h3> <p>如果当前浏览器允许进入全屏模式，这个属性返回true，可用来检测浏览器是否支持全屏API</p> <pre><code>if (document.fullscreenEnabled) { ... }
+</code></pre> <p>早期的时候，screen中的s是大写的，现在都小写了，除了Firefox；加上前缀，跨浏览器的代码是：</p> <pre><code>// full-screen 可用?
+if (
+    document.fullscreenEnabled || 
+    document.webkitFullscreenEnabled || 
+    document.mozFullScreenEnabled ||
+    document.msFullscreenEnabled
+) {
+...
+}
+</code></pre> <p>Opera 12是唯一不需要加前缀的浏览器，不过Opera 15+ 需要加webkit，为啥呢？因为两年前就换内核了啊，不过这个不怎么重要，反正很少人用Opera</p> <h3 id="_2-element-requestfullscreen"><a href="#_2-element-requestfullscreen" aria-hidden="true" class="header-anchor">#</a> 2. element.requestFullscreen()</h3> <p>这个方法是单个元素全屏显示</p> <p>例如：</p> <pre><code>document.getElementById(&quot;myimage&quot;).requestFullscreen();
+</code></pre> <p>同样，Firefox的screen的s是大写的：</p> <pre><code>var i = document.getElementById(&quot;myimage&quot;);
+ 
+// go full-screen
+if (i.requestFullscreen) {
+    i.requestFullscreen();
+} else if (i.webkitRequestFullscreen) {
+    i.webkitRequestFullscreen();
+} else if (i.mozRequestFullScreen) {
+    i.mozRequestFullScreen();
+} else if (i.msRequestFullscreen) {
+    i.msRequestFullscreen();
+}
+</code></pre> <h3 id="_3-document-fullscreenelement"><a href="#_3-document-fullscreenelement" aria-hidden="true" class="header-anchor">#</a> 3. document.fullscreenElement</h3> <p>这个属性返回当前全屏显示的元素，没有则返回null</p> <pre><code>if (document.fullscreenElement) { ... }
+</code></pre> <p>同样，Firefox的screen的s是大写的：</p> <pre><code>// are we full-screen?
+if (
+    document.fullscreenElement ||
+    document.webkitFullscreenElement ||
+    document.mozFullScreenElement ||
+    document.msFullscreenElement
+) {
+...
+}
+</code></pre> <h3 id="_4-document-exitfullscreen"><a href="#_4-document-exitfullscreen" aria-hidden="true" class="header-anchor">#</a> 4. document.exitFullscreen</h3> <p>这个方法退出全屏状态</p> <pre><code>document.exitFullscreen();
+</code></pre> <p>同样的，‘screen’是小写的，不过它之前写作 cancelFullScreen，在Firefox仍然还是这样写。</p> <pre><code>// exit full-screen
+if (document.exitFullscreen) {
+    document.exitFullscreen();
+} else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+} else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+} else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+}
+</code></pre> <h3 id="_5-document-fullscreenchange-event"><a href="#_5-document-fullscreenchange-event" aria-hidden="true" class="header-anchor">#</a> 5. document.fullscreenchange event</h3> <p>进/出全屏状态的时候触发事件，不附带任何信息，不过可通过上面介绍的document.fullscreenElement来监测当前是否是全屏状态。</p> <pre><code>document.addEventListener(&quot;fullscreenchange&quot;, function() { ... });
+</code></pre> <p>下面是各浏览器的写法，注意IE的写法有点特殊</p> <pre><code>document.addEventListener(&quot;fullscreenchange&quot;, FShandler);
+document.addEventListener(&quot;webkitfullscreenchange&quot;, FShandler);
+document.addEventListener(&quot;mozfullscreenchange&quot;, FShandler);
+document.addEventListener(&quot;MSFullscreenChange&quot;, FShandler);
+</code></pre> <h3 id="_6-document-fullscreenerror-event"><a href="#_6-document-fullscreenerror-event" aria-hidden="true" class="header-anchor">#</a> 6. document.fullscreenerror event</h3> <p>全屏有时会不成功，比如, iframes 如果没有 allowfullscreen 属性 或者窗口化的插件的内容想执行全屏却被阻止（windowed plug-in content may be blocked）的时候，fullscreenerror 事件就可能被触发：</p> <pre><code>document.addEventListener(&quot;fullscreenerror&quot;, function() { ... });
+</code></pre> <p>同样的，加上个浏览器厂商的前缀，注意IE的写法是驼峰式的（camel-casing）:</p> <pre><code>document.addEventListener(&quot;fullscreenerror&quot;, FSerrorhandler);
+document.addEventListener(&quot;webkitfullscreenerror&quot;, FSerrorhandler);
+document.addEventListener(&quot;mozfullscreenerror&quot;, FSerrorhandler);
+document.addEventListener(&quot;MSFullscreenError&quot;, FSerrorhandler);
+</code></pre> <hr> <h2 id="full-screen-css部分的api"><a href="#full-screen-css部分的api" aria-hidden="true" class="header-anchor">#</a> Full-Screen CSS部分的API</h2> <p>全屏状态下的元素也能够被赋予样式</p> <h3 id="_1-fullscreen-伪类"><a href="#_1-fullscreen-伪类" aria-hidden="true" class="header-anchor">#</a> 1. :fullscreen 伪类</h3> <p>控制处于全屏状态的元素</p> <pre><code>:fullscreen {
+    ...
+}
+</code></pre> <p>之前被叫做 :full-screen, 然后在Webkit 和 Firefox中还是这样。跨多浏览器代码：</p> <pre><code>:-webkit-full-screen {
+}
+ 
+:-moz-full-screen {
+}
+ 
+:-ms-fullscreen {
+}
+ 
+:fullscreen {
+}
+</code></pre> <h3 id="_2-backdrop伪元素"><a href="#_2-backdrop伪元素" aria-hidden="true" class="header-anchor">#</a> 2. ::backdrop伪元素</h3> <p>当不同比例的元素，比如图像，全屏的时候，多余的背景色可以用这个伪元素来定义。</p> <pre><code>:fullscreen::backdrop {
+    background-color: #006; /* dark blue */
+}
+</code></pre> <p>backdrop就是全屏元素后面的空白背景，在全屏元素之下、在页面剩下元素之上，IE11支持, Firefox 和 Opera 12不支持。Chrome、Safari 和 Opera 15+ 引入了这个 backdrop element 但是不允许定义样式。目前仅仅能够作用于 IE11，所以实际代码如下</p> <pre><code>:-ms-fullscreen::-ms-backdrop {
+    background-color: #006; /* dark blue */
+}
+</code></pre> <h3 id="各浏览器全屏样式区别"><a href="#各浏览器全屏样式区别" aria-hidden="true" class="header-anchor">#</a> 各浏览器全屏样式区别</h3> <p>在 IE11, Firefox, 和 Opera 12 全屏元素是 100% 的 width 和 height ，图片因此就拉伸变形了。在IE11 为全屏元素设置width 和 height 的结果是元素跑到了屏幕 的左上角，背景为黑色（可以用::backdrop改为其它色）。Opera 12 和 IE11 类似，不过 backdrop背景是透明的，Firefox 忽略尺寸设置。在Chrome, Safari, 和 Opera 15+ 全屏元素是居中的、背景backdrop元素黑色。</p> <p>如果要保持浏览器的一致性，同样可以为 Webkit/Blink 内核的浏览器像 Firefox/IE11 这样拉伸图片:</p> <pre><code>:-webkit-full-screen {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: none;
+}
+</code></pre> <p>或者，为IE11 赋予和 Webkit/Blink 一样的居中方式：</p> <pre><code>:-ms-fullscreen {
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+</code></pre> <p>这个方法在 Firefox无效，它忽略上面提到的width和height，解决的方法很简单：可以变相地让它的父元素全屏，然后调节它的尺寸。</p> <hr> <h2 id="想要开始使用了？"><a href="#想要开始使用了？" aria-hidden="true" class="header-anchor">#</a> 想要开始使用了？</h2> <p>Full-Screen API 相对简单，不过浏览器差异使得代码很丑陋，并且不保证将来不变（原文作者一年前还写了一篇文章，变化挺大）, 把精力放到其它事情上，等到这个 API 稳定之后再来看。</p> <p>在HTML5 游戏和视频为主的网站，全屏几乎是必须的，如果不想自己维护代码，可以使用一个现成的库，例如 <a href="https://github.com/sindresorhus/screenfull.js/" target="_blank" rel="noopener noreferrer">screenfull.js<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <blockquote><p>原文地址：<a href="http://www.sitepoint.com/use-html5-full-screen-api/" target="_blank" rel="noopener noreferrer">How to Use the HTML5 Full-Screen API (Again)<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote></div></section> <footer class="footer">
+  Copyright © 2019 <br>Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">
+    VuePress</a> | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">
+    Simple
+  </a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.99e05f95.js" defer></script><script src="/assets/js/2.93e54dd3.js" defer></script><script src="/assets/js/48.9de647b4.js" defer></script>
+  </body>
+</html>

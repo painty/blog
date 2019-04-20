@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>jQuery里面keypress与keydown区别 | Bobscript</title>
+    <meta name="description" content="白天切图，晚上切菜">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c745cea3.css" as="style"><link rel="preload" href="/assets/js/app.99e05f95.js" as="script"><link rel="preload" href="/assets/js/2.93e54dd3.js" as="script"><link rel="preload" href="/assets/js/35.ba79a7a0.js" as="script"><link rel="prefetch" href="/assets/js/10.be48f157.js"><link rel="prefetch" href="/assets/js/11.7b371b13.js"><link rel="prefetch" href="/assets/js/12.c7ecc6e8.js"><link rel="prefetch" href="/assets/js/13.92f71886.js"><link rel="prefetch" href="/assets/js/14.d0ddbc49.js"><link rel="prefetch" href="/assets/js/15.22e5715b.js"><link rel="prefetch" href="/assets/js/16.935d7e52.js"><link rel="prefetch" href="/assets/js/17.2bf640e4.js"><link rel="prefetch" href="/assets/js/18.767ea5cf.js"><link rel="prefetch" href="/assets/js/19.1f08efcc.js"><link rel="prefetch" href="/assets/js/20.971af43e.js"><link rel="prefetch" href="/assets/js/21.0f961777.js"><link rel="prefetch" href="/assets/js/22.1f524836.js"><link rel="prefetch" href="/assets/js/23.17e819da.js"><link rel="prefetch" href="/assets/js/24.c8c3eace.js"><link rel="prefetch" href="/assets/js/25.269908c9.js"><link rel="prefetch" href="/assets/js/26.5266162e.js"><link rel="prefetch" href="/assets/js/27.1a1438e2.js"><link rel="prefetch" href="/assets/js/28.0eaa4122.js"><link rel="prefetch" href="/assets/js/29.7e470fb7.js"><link rel="prefetch" href="/assets/js/3.53dd634a.js"><link rel="prefetch" href="/assets/js/30.b6b84a09.js"><link rel="prefetch" href="/assets/js/31.048567d6.js"><link rel="prefetch" href="/assets/js/32.145ad0b8.js"><link rel="prefetch" href="/assets/js/33.62e812bd.js"><link rel="prefetch" href="/assets/js/34.31c05704.js"><link rel="prefetch" href="/assets/js/36.67a5b25b.js"><link rel="prefetch" href="/assets/js/37.b6b5b0f4.js"><link rel="prefetch" href="/assets/js/38.8897bd4e.js"><link rel="prefetch" href="/assets/js/39.dc3abd65.js"><link rel="prefetch" href="/assets/js/4.da34f57a.js"><link rel="prefetch" href="/assets/js/40.329d1f91.js"><link rel="prefetch" href="/assets/js/41.57cd30e9.js"><link rel="prefetch" href="/assets/js/42.8b4613f5.js"><link rel="prefetch" href="/assets/js/43.9854386a.js"><link rel="prefetch" href="/assets/js/44.3b4a01f5.js"><link rel="prefetch" href="/assets/js/45.3ca8aa82.js"><link rel="prefetch" href="/assets/js/46.055f433b.js"><link rel="prefetch" href="/assets/js/47.acfcb947.js"><link rel="prefetch" href="/assets/js/48.9de647b4.js"><link rel="prefetch" href="/assets/js/49.f39ceb73.js"><link rel="prefetch" href="/assets/js/5.7bbbf963.js"><link rel="prefetch" href="/assets/js/50.f5907641.js"><link rel="prefetch" href="/assets/js/51.36e3efaa.js"><link rel="prefetch" href="/assets/js/52.d5ddfb61.js"><link rel="prefetch" href="/assets/js/53.ec2d3182.js"><link rel="prefetch" href="/assets/js/54.17874d42.js"><link rel="prefetch" href="/assets/js/55.145aac7c.js"><link rel="prefetch" href="/assets/js/56.7fd1efa2.js"><link rel="prefetch" href="/assets/js/6.ccc445b6.js"><link rel="prefetch" href="/assets/js/7.b43b9a6e.js"><link rel="prefetch" href="/assets/js/8.a4af12d5.js"><link rel="prefetch" href="/assets/js/9.9ac313ca.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c745cea3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="白天切图，晚上切菜" class="router-link-active">
+      Bobscript
+    </a> <div style="clear: both"></div></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      jQuery里面keypress与keydown区别
+    </h1> <time datetime="2013-8-7" title="2013-8-7" pubdate="pubdate" class="post-date">
+  5 years ago
+</time></div> <div class="content default"><h1 id="jquery里面keypress与keydown区别"><a href="#jquery里面keypress与keydown区别" aria-hidden="true" class="header-anchor">#</a> jQuery里面keypress与keydown区别</h1> <p>看了jQuery的源代码，其实jQuery里面的keypress和keydown是直接来自于原生js里面相应的onkeypress和onkeydown，没有特殊修改。所以下文讲的就是原生js里面的这两个事件的区别。</p> <p><strong>具体区别</strong>：
+<ol><li> 一个放开一个没有放开，onkeydown 先于 onkeypress 发生。但是如果一直按住某个键不放，两个事件都是会不断触发的。</li> <li>onkeypress 事件在用户按下并放开任何字母数字键时发生。但是系统按钮（例如：箭头键、功能键）无法得到识别。</li> <li>onkeydown 事件在用户按下任何键盘键（包括系统按钮）时发生，捕获的 keyCode 不区分字母大小，而 onkeypress 区分。</li></ol>
+补充一下，有时候我们为了验证表单数据，就需要根据按键动作来检测输入的数据，如果用keypress和keydown，验证这个动作发生在这个键输入结束之前，就是导致相应的检测函数只能检测到按下这个键之前的数据，所以这时候应该用keyup动作，不过这也从侧面看出keypress和keydown在动作上是差不多的，只是能够获取的键值不同。个人感觉，keydown检测的是键盘的实体键（实体键大小写a和A是一个键嘛），也验证了前面的话。</p> <p>可以自己测试一下：
+</p><blockquote>&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;按键测试&lt;/title&gt;
+&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div&gt;次数&lt;/div&gt;
+&lt;script&gt;
+i=0;
+$(window).keypress( function () { $('div').html(i++) } );
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</blockquote><p></p> <p>下面是微软的定义的keypress和keydown的按键区别。
+<strong>onkeypress</strong>
+As of Microsoft® Internet Explorer 4.0, the onkeypress event fires and can be canceled for the following keys:</p> <p>Letters: A - Z (uppercase and lowercase)
+Numerals: 0 - 9
+Symbols: ! @ # $ % ^ &amp; * ( ) _ - + = &lt; [ ] { } , . / ? \ | ' ` &quot; ~
+System: ESC, SPACEBAR, ENTER</p> <p><strong>onkeydown</strong>
+As of Microsoft® Internet Explorer 4.0, the onkeydown event fires for the following keys:</p> <p>Editing: DELETE, INSERT
+Function: F1 - F12
+Letters: A - Z (uppercase and lowercase)
+Navigation: HOME, END, LEFT ARROW, RIGHT ARROW, UP ARROW, DOWN ARROW
+Numerals: 0 - 9
+Symbols: ! @ # $ % ^ &amp; * ( ) _ - + = &lt; [ ] { } , . / ? \ | ' ` &quot; ~
+System: ESC, SPACEBAR, SHIFT, TAB</p> <p>As of Internet Explorer 5, the event also fires for the following keys:</p> <p>Editing: BACKSPACE
+Navigation: PAGE UP, PAGE DOWN
+System: SHIFT+TAB</p> <p>As of Internet Explorer 5, this event can be canceled for the following keys and key combinations by specifying event.returnValue=false:</p> <p>Editing: BACKSPACE, DELETE
+Letters: A - Z (uppercase and lowercase)
+Navigation: PAGE UP, PAGE DOWN, END, HOME, LEFT ARROW, RIGHT ARROW, UP ARROW, DOWN ARROW
+Numerals: 0 - 9
+Symbols: ! @ # $ % ^ &amp; * ( ) _ - + = &lt; [ ] { } , . / ? \ | ' ` &quot; ~
+System: SPACEBAR, ESC, TAB, SHIFT+TAB</p> <p>You can cancel all keys that fire the onkeydown event in HTML Applications, including most accelerator keys, such as ALT+F4.</p> <p>In Internet Explorer 4.0, you cannot cancel the onkeydown event, but you can use the onkeypress event to cancel keyboard events.</p> <p></p></div></section> <footer class="footer">
+  Copyright © 2019 <br>Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">
+    VuePress</a> | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">
+    Simple
+  </a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.99e05f95.js" defer></script><script src="/assets/js/2.93e54dd3.js" defer></script><script src="/assets/js/35.ba79a7a0.js" defer></script>
+  </body>
+</html>

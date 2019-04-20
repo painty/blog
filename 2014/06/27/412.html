@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>[译]JS事件顺序/捕获/冒泡详解 | Bobscript</title>
+    <meta name="description" content="白天切图，晚上切菜">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.c745cea3.css" as="style"><link rel="preload" href="/assets/js/app.99e05f95.js" as="script"><link rel="preload" href="/assets/js/2.93e54dd3.js" as="script"><link rel="preload" href="/assets/js/46.055f433b.js" as="script"><link rel="prefetch" href="/assets/js/10.be48f157.js"><link rel="prefetch" href="/assets/js/11.7b371b13.js"><link rel="prefetch" href="/assets/js/12.c7ecc6e8.js"><link rel="prefetch" href="/assets/js/13.92f71886.js"><link rel="prefetch" href="/assets/js/14.d0ddbc49.js"><link rel="prefetch" href="/assets/js/15.22e5715b.js"><link rel="prefetch" href="/assets/js/16.935d7e52.js"><link rel="prefetch" href="/assets/js/17.2bf640e4.js"><link rel="prefetch" href="/assets/js/18.767ea5cf.js"><link rel="prefetch" href="/assets/js/19.1f08efcc.js"><link rel="prefetch" href="/assets/js/20.971af43e.js"><link rel="prefetch" href="/assets/js/21.0f961777.js"><link rel="prefetch" href="/assets/js/22.1f524836.js"><link rel="prefetch" href="/assets/js/23.17e819da.js"><link rel="prefetch" href="/assets/js/24.c8c3eace.js"><link rel="prefetch" href="/assets/js/25.269908c9.js"><link rel="prefetch" href="/assets/js/26.5266162e.js"><link rel="prefetch" href="/assets/js/27.1a1438e2.js"><link rel="prefetch" href="/assets/js/28.0eaa4122.js"><link rel="prefetch" href="/assets/js/29.7e470fb7.js"><link rel="prefetch" href="/assets/js/3.53dd634a.js"><link rel="prefetch" href="/assets/js/30.b6b84a09.js"><link rel="prefetch" href="/assets/js/31.048567d6.js"><link rel="prefetch" href="/assets/js/32.145ad0b8.js"><link rel="prefetch" href="/assets/js/33.62e812bd.js"><link rel="prefetch" href="/assets/js/34.31c05704.js"><link rel="prefetch" href="/assets/js/35.ba79a7a0.js"><link rel="prefetch" href="/assets/js/36.67a5b25b.js"><link rel="prefetch" href="/assets/js/37.b6b5b0f4.js"><link rel="prefetch" href="/assets/js/38.8897bd4e.js"><link rel="prefetch" href="/assets/js/39.dc3abd65.js"><link rel="prefetch" href="/assets/js/4.da34f57a.js"><link rel="prefetch" href="/assets/js/40.329d1f91.js"><link rel="prefetch" href="/assets/js/41.57cd30e9.js"><link rel="prefetch" href="/assets/js/42.8b4613f5.js"><link rel="prefetch" href="/assets/js/43.9854386a.js"><link rel="prefetch" href="/assets/js/44.3b4a01f5.js"><link rel="prefetch" href="/assets/js/45.3ca8aa82.js"><link rel="prefetch" href="/assets/js/47.acfcb947.js"><link rel="prefetch" href="/assets/js/48.9de647b4.js"><link rel="prefetch" href="/assets/js/49.f39ceb73.js"><link rel="prefetch" href="/assets/js/5.7bbbf963.js"><link rel="prefetch" href="/assets/js/50.f5907641.js"><link rel="prefetch" href="/assets/js/51.36e3efaa.js"><link rel="prefetch" href="/assets/js/52.d5ddfb61.js"><link rel="prefetch" href="/assets/js/53.ec2d3182.js"><link rel="prefetch" href="/assets/js/54.17874d42.js"><link rel="prefetch" href="/assets/js/55.145aac7c.js"><link rel="prefetch" href="/assets/js/56.7fd1efa2.js"><link rel="prefetch" href="/assets/js/6.ccc445b6.js"><link rel="prefetch" href="/assets/js/7.b43b9a6e.js"><link rel="prefetch" href="/assets/js/8.a4af12d5.js"><link rel="prefetch" href="/assets/js/9.9ac313ca.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c745cea3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container vuepress-theme-simple"><header class="header"><a href="/" title="白天切图，晚上切菜" class="router-link-active">
+      Bobscript
+    </a> <div style="clear: both"></div></header> <section class="post-view"><div class="post-head"><h1 class="post-title">
+      [译]JS事件顺序/捕获/冒泡详解
+    </h1> <time datetime="2014-6-27" title="2014-6-27" pubdate="pubdate" class="post-date">
+  4 years ago
+</time></div> <div class="content default"><h1 id="译-js事件顺序-捕获-冒泡详解"><a href="#译-js事件顺序-捕获-冒泡详解" aria-hidden="true" class="header-anchor">#</a> [译]JS事件顺序/捕获/冒泡详解</h1> <p>**问题：**如果一个元素和其父元素都绑定了同一事件，哪一个先触发？——这当然取决于浏览器。</p> <p>先来看一个简单的问题，假设你有一个一个element1元素，里面还有一个element2元素。</p> <pre><code>-----------------------------------
+| element1                        |
+|   -------------------------     |
+|   |element2               |     |
+|   -------------------------     |
+|                                 |
+-----------------------------------
+</code></pre> <p>这两个元素都绑定了click事件，如果用户点击element2，则element1和element2都会触发点击事件，但是哪一个先触发呢？换种说法，事件触发的的顺序。</p> <h2 id="两种事件模型"><a href="#两种事件模型" aria-hidden="true" class="header-anchor">#</a> 两种事件模型</h2> <p>很久很久以前，那时候网景公司Netscape还如日中天的时候，它和微软在这一事情上反着干。</p> <hr> <ul><li>网景公司说element1优先，这叫事件捕获（event capturing）</li> <li>微软则坚持element2优先，这叫事件冒泡（event bubbling）</li></ul> <hr> <p>这两种顺序完全是反着的嘛。IE只支持事件冒泡，Mozilla, Opera 7 和 Konqueror 两者都支持。再老版本的Opera和iCab都不支持。（这篇文章好老的感觉，iCab我都没听说过——Bob注）</p> <h3 id="事件捕获"><a href="#事件捕获" aria-hidden="true" class="header-anchor">#</a> 事件捕获</h3> <p>当使用事件捕获的时候</p> <pre><code>               | |
+---------------| |-----------------
+| element1     | |                |
+|   -----------| |-----------     |
+|   |element2  \ /          |     |
+|   -------------------------     |
+|        Event CAPTURING          |
+-----------------------------------
+</code></pre> <p>element1上面的事件处理函数先触发，element2上面的事件处理函数后触发。</p> <h3 id="事件冒泡"><a href="#事件冒泡" aria-hidden="true" class="header-anchor">#</a> 事件冒泡</h3> <p>当使用时间冒泡的时候</p> <pre><code>                / \
+ ---------------| |-----------------
+ | element1     | |                |
+ |   -----------| |-----------     |
+ |   |element2  | |          |     |
+ |   -------------------------     |
+ |        Event BUBBLING           |
+ -----------------------------------
+</code></pre> <p>element2上面的事件处理函数先触发，element1上面的事件处理函数后触发。</p> <h2 id="w3c事件模型"><a href="#w3c事件模型" aria-hidden="true" class="header-anchor">#</a> W3C事件模型</h2> <p>W3C很巧妙地在这场对抗中保持中立：任何W3C事件模型中发生的事件都是先捕获，直到它到达目标元素，然后再向外冒泡。</p> <pre><code>                 | |  / \
+-----------------| |--| |-----------------
+| element1       | |  | |                |
+|   -------------| |--| |-----------     |
+|   |element2    \ /  | |          |     |
+|   --------------------------------     |
+|        W3C event model                 |
+------------------------------------------
+</code></pre> <p>作为Web开发者，可以选择是否在捕获或者冒泡的阶段注册事件，这是通过addEventListener()方法来实现的。如果addEventListener()的最后一个参数设置为true，那么这个事件是在捕获阶段被触发的；如果设置为false则是在冒泡阶段被触发。</p> <p>假设你这样做：</p> <pre><code>element1.addEventListener('click',doSomething2,true)
+element2.addEventListener('click',doSomething,false)
+</code></pre> <p>当用户点击element2的时候，会发生下面的事情：</p> <ol><li>click事件从捕获阶段开始，寻找element2的父元素们是否绑定了click事件的处理函数</li> <li>事件在element1上面找到了一个click的事件处理函数doSomething2()，然后就执行了doSomething2</li> <li>然后事件就跑到了目标元素element2自身，这个过程中没发现它其他的父元素的click事件处理函数了，然后事件进入了冒泡阶段，执行绑定在element2上面的doSomething()</li> <li>事件继续往上冒泡，并检查有没有父元素设置了冒泡阶段触发的click事件处理函数，这个例子中梅苑，所以接下来什么都不会发生了。</li></ol> <p>反过来的过程是：</p> <pre><code>element1.addEventListener('click',doSomething2,false)
+element2.addEventListener('click',doSomething,false)
+</code></pre> <p>当用户点击element2的时候，会发生下面的事情：</p> <ol><li>click时间从捕获阶段开始，寻找element2的父元素们是否绑定了click事件的处理函数，在这个例子中没有</li> <li>然后事件就跑到了目标元素element2自身，然后事件进入了冒泡阶段，执行绑定在element2上面的doSomething()</li> <li>事件继续往上冒泡，并检查有没有父元素设置了冒泡阶段触发的click事件处理函数</li> <li>事件在element1上面找到了一个冒泡阶段触发的click的事件处理函数doSomething2，执行之</li></ol> <h3 id="和传统事件模型的兼容性"><a href="#和传统事件模型的兼容性" aria-hidden="true" class="header-anchor">#</a> 和传统事件模型的兼容性</h3> <p>在支持W3C DOM的浏览器里面，传统的事件注册</p> <pre><code>element1.onclick = doSomething2;
+</code></pre> <p>将会被视作是在冒泡阶段注册的。（原文：is seen as a registration in the bubbling phase.）</p> <h2 id="事件冒泡的用途"><a href="#事件冒泡的用途" aria-hidden="true" class="header-anchor">#</a> 事件冒泡的用途</h2> <p>很少有开发者清醒地使用事件捕获和事件冒泡。当今的页面，不是很必要让事件冒泡从而触发好几个事件处理函数，用户可能会因此感到困惑（我好翻译腔啊_(:з」∠)_——Bob说），开发者也希望脚本能够分开处理而不同的事件。用户点击一个元素触发一个函数，点击另一个元素触发另一个函数。</p> <p>当然将来不会是这样的了（其实这篇文章很老了，所以作者这么讲——Bob注），当然前提是有了这个完善的兼容性高的事件模型。如今的事件捕获和冒泡是注册默认函数。</p> <h2 id="其实它总是在发生了"><a href="#其实它总是在发生了" aria-hidden="true" class="header-anchor">#</a> 其实它总是在发生了</h2> <p>首先要明白的是，事件捕获和冒泡总是在发生。当你给document绑定了一个点击事件处理函数之后：</p> <pre><code>document.onclick = doSomething;
+if (document.captureEvents) document.captureEvents(Event.CLICK);
+</code></pre> <p>页面中的任何元素上的点击事件将会最终冒泡到document然后触发这个函数，除非前面有一个事件处理函数明确地命定事件：你给我停止冒泡了。</p> <h2 id="使用"><a href="#使用" aria-hidden="true" class="header-anchor">#</a> 使用</h2> <p>由于所有的事件都会将document作为终点，如果需要设置一个默认函数变得可能。假设有如下的页面：</p> <pre><code>------------------------------------
+| document                         |
+|   ---------------  ------------  |
+|   | element1    |  | element2 |  |
+|   ---------------  ------------  |
+|                                  |
+------------------------------------
+
+element1.onclick = doSomething;
+element2.onclick = doSomething;
+document.onclick = defaultFunction;
+</code></pre> <p>当用户点击element1或者element2，doSomething()执行。如果你想，你可以在doSomething()里面让事件传播停止，否则事件会冒泡直到执行默认函数defaultFunction()。当用户点击任何其它地方，defaultFunction()也会执行的。有时这将会很有用。</p> <p>在为拖放操作写脚本的时候，有必要让事件响应范围扩大到整个文档这么大，不过通常的做法是，目标图层上的mousedown事件触发脚本，并让它响应mousemove事件。尽管为了避免浏览器bug，mousedown常常是注册到目标图层上面，不过mousedown和mousemove必须是全文档响应的。</p> <p>记住浏览器定律第一法则（the First Law of Browserology）：任何事都可能发生，并且常常是在你最毫无防备的时候。有可能用户大范围地移动了鼠标，脚本没有跟上，因此鼠标此时已经不在目标图层上面了。</p> <ul><li>如果mousemove事件处理函数是注册给目标图层的，目标图层此时当然不会响应鼠标的移动，这会让用户奇怪。</li> <li>如果mouseup事件处理函数注册给了目标图层，事件同样不会触发，因此即便是用户已经释放了鼠标，当前图层上绑定的mousemove处理函数依然会继续随着鼠标的移动而运行，这更会让用户奇怪。</li></ul> <p>所以在上面的例子中，事件冒泡变得尤为重要，它能使得事件处理函数在整个文档的范围内都能得到合理的执行。</p> <h2 id="关闭捕获和冒泡"><a href="#关闭捕获和冒泡" aria-hidden="true" class="header-anchor">#</a> 关闭捕获和冒泡</h2> <p>不过通常你是想要关闭捕获和冒泡来避免事件之间的互相干扰。此外，如果你的文档结构非常复杂，有许多的嵌套什么的，通过关闭事件捕获和冒泡也能节省系统资源。浏览器必须穿过事件的目标元素的一个一个的父元素，来检查是否有事件处理函数。即使没有找到，这个寻找过程依然消耗时间。</p> <p>想要关闭，在微软的事件模型中，设置事件的cancelBubble属性为true</p> <pre><code>window.event.cancelBubble = true
+</code></pre> <p>在W3C事件模型里面，执行stopPropagation()方法</p> <pre><code>e.stopPropagation()
+</code></pre> <p>这将会阻止事件冒泡阶段所有的传播，为了浏览器兼容性，写成下面的形式</p> <pre><code>function doSomething(e)
+{
+    if (!e) var e = window.event;
+    e.cancelBubble = true;
+    if (e.stopPropagation) e.stopPropagation();
+}
+</code></pre> <p>对于不支持cancelBubble属性的浏览器来说，设置cancelBubble属性也没关系，浏览器也只是设置罢了，不会产生副作用当然也不会产生停止冒泡的效果。</p> <h2 id="currenttarget"><a href="#currenttarget" aria-hidden="true" class="header-anchor">#</a> currentTarget</h2> <p>正如之前看到的，事件有一个 target 或者 srcElement 属性，包含了事件发生的目标元素的引用。在我们的例子中这是element2，因为用户点击了它。</p> <p>非常重要的是，在事件捕获和冒泡阶段（如果有），这个目标不会变，一直是element2</p> <p>不过如果是下面的例子：</p> <pre><code>element1.onclick = doSomething;
+element2.onclick = doSomething;
+</code></pre> <p>当用户点击element2的时候，doSomething会执行两次，但是你怎么知道哪个HTML元素对应哪个事件处理函数呢？target/srcElement不会提供线索，它们始终指向element2因为它是事件的源头。</p> <p>为了解决这个问题，W3C添加了一个currentTarget 属性，它包含了当前事件处理函数对应的HTML元素：这正是我们需要的。不幸的是，微软事件模型不包含类似的属性。</p> <p>你可以使用this关键字。在上面的例子中它指向当前事件处理函数对应的HTML元素，就像currentTarget一样。</p> <h2 id="微软事件模型的问题"><a href="#微软事件模型的问题" aria-hidden="true" class="header-anchor">#</a> 微软事件模型的问题</h2> <p>但是当你使用微软事件模型的时候，this关键字不会指向HTML元素。加上没有类似currentTarget的属性，这意味着当你执行如下代码的时候</p> <pre><code>element1.attachEvent('onclick',doSomething)
+element2.attachEvent('onclick',doSomething)
+</code></pre> <p>你不能知道哪个HTML元素当前处理事件，这是微软事件模型最大的问题，对我来说这也是从来不使用它的原因。</p> <p>希望微软能够添加currentTarget类似的属性，或者干脆就跟随标准？开发者需要这个。（IE9已经标准化了，再次说明这篇文章有点历史了。——Bob注）</p> <blockquote><p>原文地址：<a href="http://www.quirksmode.org/js/events_order.html" target="_blank" rel="noopener noreferrer">Event order<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote></div></section> <footer class="footer">
+  Copyright © 2019 <br>Powered by
+  <a href="https://vuepress.vuejs.org/" rel="noopener" target="_blank">
+    VuePress</a> | Theme
+  <a href="https://github.com/viko16/vuepress-theme-simple" rel="noopener" target="_blank">
+    Simple
+  </a></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.99e05f95.js" defer></script><script src="/assets/js/2.93e54dd3.js" defer></script><script src="/assets/js/46.055f433b.js" defer></script>
+  </body>
+</html>

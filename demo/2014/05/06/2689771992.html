@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>大于父元素宽度的图片居中</title>
+<style>
+div{height: 400px; margin-bottom: 10px;}
+.out{background: url(http://dummyimage.com/1280x400/dddddd/555555) center top no-repeat;}
+
+.out1{ overflow: hidden; position: relative; }
+.out1 img{ position: absolute; left: 50%; margin-left: -640px; }
+
+.out2{ overflow: hidden; position: relative; }
+.out2 .img{ position: relative; left: 50%; margin-left: -640px; *zoom:1; }
+
+.out3{ overflow: hidden; position: relative; }
+.out3 img{ position: relative; left: 50%; margin-left: -640px; }
+
+</style>
+</head>
+<body>
+    <div class="out">
+        
+    </div>
+    <div class="out1">
+        <img src="http://dummyimage.com/1280x400/dddddd/555555">
+    </div>
+    <div class="out2">
+        <div class="img">
+            <img src="http://dummyimage.com/1280x400/dddddd/555555">
+        </div>
+    </div>
+    <div class="out3">
+        <img src="http://dummyimage.com/1280x400/dddddd/555555">
+    </div>
+</body>
+</html>
